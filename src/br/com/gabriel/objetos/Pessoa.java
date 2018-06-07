@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author SATC
  */
-public class Pessoa {
+public abstract class Pessoa {
 
     private String nome, cpf, rg, endereco, telefone, estadoCivil;
     private Date dataNascimento;
