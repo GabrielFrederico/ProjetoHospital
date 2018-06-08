@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gabriel.formularios;
+package br.com.gabriel.interfaces;
+
+import br.com.gabriel.objetos.Triagem;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author SATC
  */
-public class Triagem extends javax.swing.JFrame {
+public class JFTriagem extends javax.swing.JFrame {
 
     /**
      * Creates new form Triagem
      */
-    public Triagem() {
+    public JFTriagem() {
         initComponents();
     }
 
@@ -96,6 +100,11 @@ public class Triagem extends javax.swing.JFrame {
 
         jBCadastrarTriagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBCadastrarTriagem.setText("Cadastrar");
+        jBCadastrarTriagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarTriagemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPTriagemLayout = new javax.swing.GroupLayout(jPTriagem);
         jPTriagem.setLayout(jPTriagemLayout);
@@ -171,7 +180,7 @@ public class Triagem extends javax.swing.JFrame {
                             .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLAlergiasTriagem))
                         .addGap(46, 46, 46)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBCadastrarTriagem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -202,6 +211,17 @@ public class Triagem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCadastrarTriagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarTriagemActionPerformed
+        Triagem t;
+        String Pressao = this.jTFPressaoTriagem.getText();
+        float Temperatura = Float.parseFloat(this.jTFTemperaturaTriagem.getText());
+        String Sintoma = this.jTFSintomaTriagem.getText();
+        List<String> Alergias = new ArrayList<>();
+        float Peso = Float.parseFloat(this.jTFPesoTriagem.getText());
+        float Altura = Float.parseFloat(this.jTFAlturaTriagem.getText());
+
+    }//GEN-LAST:event_jBCadastrarTriagemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,20 +239,21 @@ public class Triagem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Triagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFTriagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Triagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFTriagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Triagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFTriagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Triagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFTriagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Triagem().setVisible(true);
+                new JFTriagem().setVisible(true);
             }
         });
     }

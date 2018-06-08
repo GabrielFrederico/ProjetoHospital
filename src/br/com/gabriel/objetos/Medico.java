@@ -5,16 +5,19 @@
  */
 package br.com.gabriel.objetos;
 
+import java.util.Date;
+
 /**
  *
  * @author SATC
  */
-public class Medico {
+public class Medico extends Pessoa {
 
     private int crm;
     private String especialidade, setor;
 
-    public Medico(int crm, String especialidade, String setor) {
+    public Medico(int crm, String especialidade, String setor, String nome, String cpf, String rg, String endereco, String telefone, String estadoCivil, Date dataNascimento, char sexo) {
+        super(nome, cpf, rg, endereco, telefone, estadoCivil, dataNascimento, sexo);
         this.crm = crm;
         this.especialidade = especialidade;
         this.setor = setor;

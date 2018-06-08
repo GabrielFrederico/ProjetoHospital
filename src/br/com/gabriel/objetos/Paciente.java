@@ -5,16 +5,19 @@
  */
 package br.com.gabriel.objetos;
 
+import java.util.Date;
+
 /**
  *
  * @author SATC
  */
-public class Paciente {
+public class Paciente extends Pessoa {
 
     private int id, numeroSus;
     private Pessoa responsavel;
 
-    public Paciente(int id, int numeroSus, Pessoa responsavel) {
+    public Paciente(int id, int numeroSus, Pessoa responsavel, String nome, String cpf, String rg, String endereco, String telefone, String estadoCivil, Date dataNascimento, char sexo) {
+        super(nome, cpf, rg, endereco, telefone, estadoCivil, dataNascimento, sexo);
         this.id = id;
         this.numeroSus = numeroSus;
         this.responsavel = responsavel;

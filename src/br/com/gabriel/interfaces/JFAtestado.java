@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gabriel.formularios;
+package br.com.gabriel.interfaces;
+
+import br.com.gabriel.objetos.Atestado;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author SATC
  */
-public class Atestado extends javax.swing.JFrame {
+public class JFAtestado extends javax.swing.JFrame {
 
     /**
      * Creates new form Atestado
      */
-    public Atestado() {
+    public JFAtestado() {
         initComponents();
     }
 
@@ -66,6 +73,11 @@ public class Atestado extends javax.swing.JFrame {
 
         jBCadastrarAtestado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBCadastrarAtestado.setText("Cadastrar");
+        jBCadastrarAtestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarAtestadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPCadastroAtestadoLayout = new javax.swing.GroupLayout(jPCadastroAtestado);
         jPCadastroAtestado.setLayout(jPCadastroAtestadoLayout);
@@ -138,6 +150,22 @@ public class Atestado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFQuantidadeDiasActionPerformed
 
+    private void jBCadastrarAtestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarAtestadoActionPerformed
+        Atestado a;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date DataInicioAtestado = sdf.parse(this.jTFDataInicioAtestado.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(JFAtestado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Date DataFimAtestado = sdf.parse(this.jTFDataFimAtestado.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(JFAtestado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int QuantidadeDias = Integer.parseInt(this.jTFQuantidadeDias.getText());
+    }//GEN-LAST:event_jBCadastrarAtestadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,20 +183,21 @@ public class Atestado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Atestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Atestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Atestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Atestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtestado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Atestado().setVisible(true);
+                new JFAtestado().setVisible(true);
             }
         });
     }

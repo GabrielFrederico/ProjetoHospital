@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gabriel.formularios;
+package br.com.gabriel.interfaces;
+
+import br.com.gabriel.objetos.Paciente;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author SATC
  */
-public class Paciente extends javax.swing.JFrame {
+public class JFPaciente extends javax.swing.JFrame {
 
     /**
      * Creates new form Cadastro
      */
-    public Paciente() {
+    public JFPaciente() {
         initComponents();
     }
 
@@ -114,6 +121,11 @@ public class Paciente extends javax.swing.JFrame {
 
         jBCadastrarPaciente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBCadastrarPaciente.setText("Cadastrar");
+        jBCadastrarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPCadastroPacienteLayout = new javax.swing.GroupLayout(jPCadastroPaciente);
         jPCadastroPaciente.setLayout(jPCadastroPacienteLayout);
@@ -239,6 +251,25 @@ public class Paciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarPacienteActionPerformed
+        Paciente p;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String NomePaciente = this.jTFNomePaciente.getText();
+        try {
+            Date DataNascimentoPaciente = sdf.parse(this.jTFDatadeNascimentoPaciente.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(JFPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String CPFPaciente = this.jTFCPFPaciente.getText();
+        String RGPaciente = this.jTFRGPaciente.getText();
+        String EnderecoPaciente = this.jTFEnderecoPaciente.getText();
+        String TelefonePaciente = this.jTFTelefonePaciente.getText();
+        String EstadoCivilPaciente = this.jTFEstadoCivilPaciente.getText();
+        char SexoPaciente = this.jTFSexoPaciente.getText().toUpperCase().charAt(0);
+        int IDPaciente = Integer.parseInt(this.jTFIDPaciente.getText());
+        int NumeroSUS = Integer.parseInt(this.jTFNumeroSUSPaciente.getText());
+    }//GEN-LAST:event_jBCadastrarPacienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,21 +287,23 @@ public class Paciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Paciente().setVisible(true);
+                new JFPaciente().setVisible(true);
             }
         });
     }

@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gabriel.formularios;
+package br.com.gabriel.interfaces;
+
+import br.com.gabriel.objetos.Medico;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author SATC
  */
-public class Medico extends javax.swing.JFrame {
+public class JFMedico extends javax.swing.JFrame {
 
     /**
      * Creates new form Medico
      */
-    public Medico() {
+    public JFMedico() {
         initComponents();
     }
 
@@ -117,6 +124,11 @@ public class Medico extends javax.swing.JFrame {
 
         jBCadastrarMedico.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBCadastrarMedico.setText("Cadastrar");
+        jBCadastrarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPCadastroMedicoLayout = new javax.swing.GroupLayout(jPCadastroMedico);
         jPCadastroMedico.setLayout(jPCadastroMedicoLayout);
@@ -239,6 +251,26 @@ public class Medico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCadastrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarMedicoActionPerformed
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String NomeMedico = this.jTFNomeMedico.getText();
+        try {
+            Date DataNascimentoMedico = sdf.parse(this.jTFDatadeNascimentoMedico.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(JFMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String CPFMedico = this.jTFCPFMedico.getText();
+        String RGMedico = this.jTFRGMedico.getText();
+        String EnderecoMedico = this.jTFEnderecoMedico.getText();
+        String TelefoneMedico = this.jTFTelefoneMedico.getText();
+        String EstadoCivilMedico = this.jTFEstadoCivilMedico.getText();
+        char SexoMedico = this.jTFSexoMedico.getText().toUpperCase().charAt(0);
+        int CRM = Integer.parseInt(this.jTFCRMMedico.getText());
+        String Especialidade = this.jTFEspecialidadeMedico.getText();
+        String SetorMedico = this.jTFSetorMedico.getText();
+    }//GEN-LAST:event_jBCadastrarMedicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,20 +288,21 @@ public class Medico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Medico().setVisible(true);
+                new JFMedico().setVisible(true);
             }
         });
     }

@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gabriel.formularios;
+package br.com.gabriel.interfaces;
+
+import br.com.gabriel.objetos.Enfermeira;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author SATC
  */
-public class Enfermeira extends javax.swing.JFrame {
+public class JFEnfermeira extends javax.swing.JFrame {
 
     /**
      * Creates new form Enfermeira
      */
-    public Enfermeira() {
+    public JFEnfermeira() {
         initComponents();
     }
 
@@ -110,6 +117,11 @@ public class Enfermeira extends javax.swing.JFrame {
 
         jBCadastrarEnfermeira.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBCadastrarEnfermeira.setText("Cadastrar");
+        jBCadastrarEnfermeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarEnfermeiraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPCadastroEnfermeiraLayout = new javax.swing.GroupLayout(jPCadastroEnfermeira);
         jPCadastroEnfermeira.setLayout(jPCadastroEnfermeiraLayout);
@@ -226,6 +238,25 @@ public class Enfermeira extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCadastrarEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarEnfermeiraActionPerformed
+        Enfermeira e;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String NomeEnfermeira = this.jTFNomeEnfermeira.getText();
+        try {
+            Date DataNascimentoEnfermeira = sdf.parse(this.jTFDatadeNascimentoEnfermeira.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(JFEnfermeira.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String CPFEnfermeira = this.jTFCPFEnfermeira.getText();
+        String RGEnfermeira = this.jTFRGEnfermeira.getText();
+        String EnderecoEnfermeira = this.jTFEnderecoEnfermeira.getText();
+        String TelefoneEnfermeira = this.jTFTelefoneEnfermeira.getText();
+        String EstadoCivilEnfermeira = this.jTFEstadoCivilEnfermeira.getText();
+        char SexoEnfermeira = this.jTFSexoEnfermeira.getText().toUpperCase().charAt(0);
+        int Cofen = Integer.parseInt(this.jTFCofenEnfermeira.getText());
+        String SetorEnfermeira = this.jTFSetorEnfermeira.getText();
+    }//GEN-LAST:event_jBCadastrarEnfermeiraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,20 +274,21 @@ public class Enfermeira extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Enfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEnfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Enfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEnfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Enfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEnfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Enfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEnfermeira.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Enfermeira().setVisible(true);
+                new JFEnfermeira().setVisible(true);
             }
         });
     }
