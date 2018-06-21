@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -24,14 +24,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPCadastroEnfermeira" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="jLCadastrodeEnfermeira" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPCadastroEnfermeira" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +79,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTFCPFEnfermeira" alignment="0" pref="121" max="32767" attributes="0"/>
+                      <Component id="jTFCPFEnfermeira" alignment="0" pref="105" max="32767" attributes="0"/>
                       <Component id="jTFCofenEnfermeira" alignment="1" max="32767" attributes="0"/>
                       <Component id="jTFSetorEnfermeira" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTFNomeEnfermeira" alignment="1" max="32767" attributes="0"/>
@@ -95,7 +95,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTFEstadoCivilEnfermeira" alignment="0" pref="122" max="32767" attributes="0"/>
+                      <Component id="jTFEstadoCivilEnfermeira" alignment="0" pref="106" max="32767" attributes="0"/>
                       <Component id="jTFSexoEnfermeira" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTFTelefoneEnfermeira" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTFDatadeNascimentoEnfermeira" alignment="0" max="32767" attributes="0"/>

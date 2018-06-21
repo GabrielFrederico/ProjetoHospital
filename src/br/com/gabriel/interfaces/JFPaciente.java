@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFPaciente extends javax.swing.JFrame {
+    Paciente p;
 
     /**
      * Creates new form Cadastro
@@ -34,6 +35,9 @@ public class JFPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPCadastroPaciente = new javax.swing.JPanel();
         jLIDPaciente = new javax.swing.JLabel();
         jLNumeroSUSPaciente = new javax.swing.JLabel();
@@ -95,7 +99,7 @@ public class JFPaciente extends javax.swing.JFrame {
         jLDatadeNascimentoPaciente.setText("Data de Nascimento:");
 
         jLSexoPaciente.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLSexoPaciente.setText("Sexo:");
+        jLSexoPaciente.setText("Sexo: M ou F");
 
         jTFIDPaciente.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
@@ -140,14 +144,14 @@ public class JFPaciente extends javax.swing.JFrame {
                     .addComponent(jLCPFPaciente)
                     .addComponent(jLIDPaciente)
                     .addComponent(jLRGPaciente))
-                .addGap(27, 27, 27)
-                .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFCPFPaciente)
-                    .addComponent(jTFIDPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jTFNumeroSUSPaciente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTFResponsavelPaciente)
+                    .addComponent(jTFNumeroSUSPaciente, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTFRGPaciente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFNomePaciente, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTFRGPaciente))
+                    .addComponent(jTFCPFPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jTFIDPaciente))
                 .addGap(31, 31, 31)
                 .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLDatadeNascimentoPaciente)
@@ -157,10 +161,10 @@ public class JFPaciente extends javax.swing.JFrame {
                     .addComponent(jLEstadoCivilPaciente))
                 .addGap(18, 18, 18)
                 .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFEstadoCivilPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jTFEstadoCivilPaciente)
                     .addComponent(jTFSexoPaciente)
                     .addComponent(jTFEnderecoPaciente)
-                    .addComponent(jTFTelefonePaciente)
+                    .addComponent(jTFTelefonePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(jTFDatadeNascimentoPaciente))
                 .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCadastroPacienteLayout.createSequentialGroup()
@@ -236,7 +240,7 @@ public class JFPaciente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(jLCadastrodoPaciente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,14 +253,15 @@ public class JFPaciente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarPacienteActionPerformed
-        Paciente p;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String NomePaciente = this.jTFNomePaciente.getText();
+        Date DataNascimentoPaciente = new Date();
         try {
-            Date DataNascimentoPaciente = sdf.parse(this.jTFDatadeNascimentoPaciente.getText());
+            DataNascimentoPaciente = sdf.parse(this.jTFDatadeNascimentoPaciente.getText());
         } catch (ParseException ex) {
             Logger.getLogger(JFPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -268,6 +273,7 @@ public class JFPaciente extends javax.swing.JFrame {
         char SexoPaciente = this.jTFSexoPaciente.getText().toUpperCase().charAt(0);
         int IDPaciente = Integer.parseInt(this.jTFIDPaciente.getText());
         int NumeroSUS = Integer.parseInt(this.jTFNumeroSUSPaciente.getText());
+        p = new Paciente(IDPaciente, NumeroSUS, p, NomePaciente, CPFPaciente, RGPaciente, EnderecoPaciente, TelefonePaciente, EstadoCivilPaciente, DataNascimentoPaciente, SexoPaciente);
     }//GEN-LAST:event_jBCadastrarPacienteActionPerformed
 
     /**
@@ -309,6 +315,9 @@ public class JFPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jBCadastrarPaciente;
     private javax.swing.JLabel jLCPFPaciente;
     private javax.swing.JLabel jLCadastrodoPaciente;

@@ -14,6 +14,7 @@ import java.util.List;
  * @author SATC
  */
 public class JFTriagem extends javax.swing.JFrame {
+    Triagem t;
 
     /**
      * Creates new form Triagem
@@ -180,7 +181,6 @@ public class JFTriagem extends javax.swing.JFrame {
                             .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLAlergiasTriagem))
                         .addGap(46, 46, 46)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBCadastrarTriagem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -209,6 +209,7 @@ public class JFTriagem extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarTriagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarTriagemActionPerformed

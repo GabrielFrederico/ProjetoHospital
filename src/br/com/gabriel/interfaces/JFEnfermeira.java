@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFEnfermeira extends javax.swing.JFrame {
+    Enfermeira e;
 
     /**
      * Creates new form Enfermeira
@@ -137,7 +138,7 @@ public class JFEnfermeira extends javax.swing.JFrame {
                     .addComponent(jLRGEnfermeira))
                 .addGap(86, 86, 86)
                 .addGroup(jPCadastroEnfermeiraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFCPFEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(jTFCPFEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jTFCofenEnfermeira, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFSetorEnfermeira)
                     .addComponent(jTFNomeEnfermeira, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -151,7 +152,7 @@ public class JFEnfermeira extends javax.swing.JFrame {
                     .addComponent(jLEstadoCivilEnfermeira))
                 .addGap(18, 18, 18)
                 .addGroup(jPCadastroEnfermeiraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFEstadoCivilEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                    .addComponent(jTFEstadoCivilEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                     .addComponent(jTFSexoEnfermeira)
                     .addComponent(jTFTelefoneEnfermeira)
                     .addComponent(jTFDatadeNascimentoEnfermeira)
@@ -217,13 +218,13 @@ public class JFEnfermeira extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPCadastroEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLCadastrodeEnfermeira)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPCadastroEnfermeira, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,6 +237,7 @@ public class JFEnfermeira extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarEnfermeiraActionPerformed

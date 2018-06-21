@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFAtestado extends javax.swing.JFrame {
+    Atestado a;
 
     /**
      * Creates new form Atestado
@@ -144,6 +145,7 @@ public class JFAtestado extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFQuantidadeDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFQuantidadeDiasActionPerformed
@@ -151,7 +153,7 @@ public class JFAtestado extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFQuantidadeDiasActionPerformed
 
     private void jBCadastrarAtestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarAtestadoActionPerformed
-        Atestado a;
+        Atestado a = new Atestado(jTFDataInicioAtestado.getText(), jTFDataFimAtestado.getText(), Consulta, jTFQuantidadeDias.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date DataInicioAtestado = sdf.parse(this.jTFDataInicioAtestado.getText());
