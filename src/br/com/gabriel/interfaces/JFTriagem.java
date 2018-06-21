@@ -5,7 +5,10 @@
  */
 package br.com.gabriel.interfaces;
 
+import br.com.gabriel.objetos.Enfermeira;
+import br.com.gabriel.objetos.Paciente;
 import br.com.gabriel.objetos.Triagem;
+import br.com.gabriel.singleton.STriagem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,10 @@ import java.util.List;
  * @author SATC
  */
 public class JFTriagem extends javax.swing.JFrame {
+
     Triagem t;
+    Enfermeira e;
+    Paciente p;
 
     /**
      * Creates new form Triagem
@@ -52,7 +58,8 @@ public class JFTriagem extends javax.swing.JFrame {
         jTFAlergiasTriagem = new javax.swing.JTextField();
         jBCadastrarTriagem = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLTriagem.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLTriagem.setText("Triagem");
@@ -213,14 +220,14 @@ public class JFTriagem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarTriagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarTriagemActionPerformed
-        Triagem t;
         String Pressao = this.jTFPressaoTriagem.getText();
         float Temperatura = Float.parseFloat(this.jTFTemperaturaTriagem.getText());
         String Sintoma = this.jTFSintomaTriagem.getText();
         List<String> Alergias = new ArrayList<>();
         float Peso = Float.parseFloat(this.jTFPesoTriagem.getText());
         float Altura = Float.parseFloat(this.jTFAlturaTriagem.getText());
-
+        t = new Triagem(e, p, Pressao, Sintoma, Temperatura, Peso, Altura, Alergias);
+        STriagem.getInstance().getTriagem().add(t);
     }//GEN-LAST:event_jBCadastrarTriagemActionPerformed
 
     /**

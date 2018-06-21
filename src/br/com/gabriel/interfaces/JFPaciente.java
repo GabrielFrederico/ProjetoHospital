@@ -6,17 +6,20 @@
 package br.com.gabriel.interfaces;
 
 import br.com.gabriel.objetos.Paciente;
+import br.com.gabriel.singleton.SPaciente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author SATC
  */
 public class JFPaciente extends javax.swing.JFrame {
+
     Paciente p;
 
     /**
@@ -62,9 +65,11 @@ public class JFPaciente extends javax.swing.JFrame {
         jTFDatadeNascimentoPaciente = new javax.swing.JTextField();
         jTFSexoPaciente = new javax.swing.JTextField();
         jBCadastrarPaciente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLCadastrodoPaciente = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPCadastroPaciente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -131,6 +136,13 @@ public class JFPaciente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPCadastroPacienteLayout = new javax.swing.GroupLayout(jPCadastroPaciente);
         jPCadastroPaciente.setLayout(jPCadastroPacienteLayout);
         jPCadastroPacienteLayout.setHorizontalGroup(
@@ -169,6 +181,8 @@ public class JFPaciente extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCadastroPacienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(32, 32, 32)
                 .addComponent(jBCadastrarPaciente)
                 .addContainerGap())
         );
@@ -222,7 +236,9 @@ public class JFPaciente extends javax.swing.JFrame {
                     .addComponent(jLRGPaciente)
                     .addComponent(jTFRGPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBCadastrarPaciente)
+                .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBCadastrarPaciente)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -274,7 +290,15 @@ public class JFPaciente extends javax.swing.JFrame {
         int IDPaciente = Integer.parseInt(this.jTFIDPaciente.getText());
         int NumeroSUS = Integer.parseInt(this.jTFNumeroSUSPaciente.getText());
         p = new Paciente(IDPaciente, NumeroSUS, p, NomePaciente, CPFPaciente, RGPaciente, EnderecoPaciente, TelefonePaciente, EstadoCivilPaciente, DataNascimentoPaciente, SexoPaciente);
+        SPaciente.getInstance().getPacientes().add(p);
     }//GEN-LAST:event_jBCadastrarPacienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for (Paciente p : SPaciente.getInstance().getPacientes()) {
+            JOptionPane.showMessageDialog(this, p.toString());
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +343,7 @@ public class JFPaciente extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jBCadastrarPaciente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLCPFPaciente;
     private javax.swing.JLabel jLCadastrodoPaciente;
     private javax.swing.JLabel jLDatadeNascimentoPaciente;

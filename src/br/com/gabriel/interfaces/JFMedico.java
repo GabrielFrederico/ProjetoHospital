@@ -6,6 +6,7 @@
 package br.com.gabriel.interfaces;
 
 import br.com.gabriel.objetos.Medico;
+import br.com.gabriel.singleton.SMedico;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFMedico extends javax.swing.JFrame {
+
     Medico m;
 
     /**
@@ -61,7 +63,8 @@ public class JFMedico extends javax.swing.JFrame {
         jTFSexoMedico = new javax.swing.JTextField();
         jBCadastrarMedico = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLCadastrodeMedico.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLCadastrodeMedico.setText("Cadastro de Médico");
@@ -254,11 +257,11 @@ public class JFMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarMedicoActionPerformed
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String NomeMedico = this.jTFNomeMedico.getText();
+        Date DataNascimentoMedico = new Date();
         try {
-            Date DataNascimentoMedico = sdf.parse(this.jTFDatadeNascimentoMedico.getText());
+            DataNascimentoMedico = sdf.parse(this.jTFDatadeNascimentoMedico.getText());
         } catch (ParseException ex) {
             Logger.getLogger(JFMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -271,6 +274,8 @@ public class JFMedico extends javax.swing.JFrame {
         int CRM = Integer.parseInt(this.jTFCRMMedico.getText());
         String Especialidade = this.jTFEspecialidadeMedico.getText();
         String SetorMedico = this.jTFSetorMedico.getText();
+        m = new Medico(CRM, Especialidade, SetorMedico, RGMedico, CPFMedico, RGMedico, RGMedico, TelefoneMedico, EstadoCivilMedico, DataNascimentoMedico, SexoMedico);
+        SMedico.getInstance().getMedicos().add(m);
     }//GEN-LAST:event_jBCadastrarMedicoActionPerformed
 
     /**

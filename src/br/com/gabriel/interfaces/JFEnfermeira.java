@@ -6,6 +6,7 @@
 package br.com.gabriel.interfaces;
 
 import br.com.gabriel.objetos.Enfermeira;
+import br.com.gabriel.singleton.SEnfermeira;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFEnfermeira extends javax.swing.JFrame {
+
     Enfermeira e;
 
     /**
@@ -59,7 +61,8 @@ public class JFEnfermeira extends javax.swing.JFrame {
         jTFSexoEnfermeira = new javax.swing.JTextField();
         jBCadastrarEnfermeira = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLCadastrodeEnfermeira.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLCadastrodeEnfermeira.setText("Cadastro de Enfermeira(o)");
@@ -241,11 +244,11 @@ public class JFEnfermeira extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarEnfermeiraActionPerformed
-        Enfermeira e;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String NomeEnfermeira = this.jTFNomeEnfermeira.getText();
+        Date DataNascimentoEnfermeira = new Date();
         try {
-            Date DataNascimentoEnfermeira = sdf.parse(this.jTFDatadeNascimentoEnfermeira.getText());
+            DataNascimentoEnfermeira = sdf.parse(this.jTFDatadeNascimentoEnfermeira.getText());
         } catch (ParseException ex) {
             Logger.getLogger(JFEnfermeira.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -257,6 +260,8 @@ public class JFEnfermeira extends javax.swing.JFrame {
         char SexoEnfermeira = this.jTFSexoEnfermeira.getText().toUpperCase().charAt(0);
         int Cofen = Integer.parseInt(this.jTFCofenEnfermeira.getText());
         String SetorEnfermeira = this.jTFSetorEnfermeira.getText();
+        e = new Enfermeira(Cofen, SetorEnfermeira, RGEnfermeira, CPFEnfermeira, RGEnfermeira, RGEnfermeira, TelefoneEnfermeira, EstadoCivilEnfermeira, DataNascimentoEnfermeira, SexoEnfermeira);
+        SEnfermeira.getInstance().getEnfermeiras().add(e);
     }//GEN-LAST:event_jBCadastrarEnfermeiraActionPerformed
 
     /**

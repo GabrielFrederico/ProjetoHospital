@@ -6,6 +6,8 @@
 package br.com.gabriel.interfaces;
 
 import br.com.gabriel.objetos.Atestado;
+import br.com.gabriel.objetos.Consulta;
+import br.com.gabriel.singleton.SAtestado;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +19,9 @@ import java.util.logging.Logger;
  * @author SATC
  */
 public class JFAtestado extends javax.swing.JFrame {
+
     Atestado a;
+    Consulta c;
 
     /**
      * Creates new form Atestado
@@ -46,6 +50,7 @@ public class JFAtestado extends javax.swing.JFrame {
         jBCadastrarAtestado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLCadastrodeAtestado.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLCadastrodeAtestado.setText("Cadastro de Atestado");
@@ -153,19 +158,22 @@ public class JFAtestado extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFQuantidadeDiasActionPerformed
 
     private void jBCadastrarAtestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarAtestadoActionPerformed
-        Atestado a = new Atestado(jTFDataInicioAtestado.getText(), jTFDataFimAtestado.getText(), Consulta, jTFQuantidadeDias.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date DataInicioAtestado = new Date();
+        Date DataFimAtestado = new Date();
         try {
-            Date DataInicioAtestado = sdf.parse(this.jTFDataInicioAtestado.getText());
+            DataInicioAtestado = sdf.parse(this.jTFDataInicioAtestado.getText());
         } catch (ParseException ex) {
             Logger.getLogger(JFAtestado.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            Date DataFimAtestado = sdf.parse(this.jTFDataFimAtestado.getText());
+            DataFimAtestado = sdf.parse(this.jTFDataFimAtestado.getText());
         } catch (ParseException ex) {
             Logger.getLogger(JFAtestado.class.getName()).log(Level.SEVERE, null, ex);
         }
         int QuantidadeDias = Integer.parseInt(this.jTFQuantidadeDias.getText());
+        a = new Atestado(DataInicioAtestado, DataFimAtestado, c, QuantidadeDias);
+        SAtestado.getInstance().getAtestados().add(a);
     }//GEN-LAST:event_jBCadastrarAtestadoActionPerformed
 
     /**
