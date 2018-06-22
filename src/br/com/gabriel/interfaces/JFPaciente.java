@@ -6,6 +6,7 @@
 package br.com.gabriel.interfaces;
 
 import br.com.gabriel.objetos.Paciente;
+import br.com.gabriel.objetos.Pessoa;
 import br.com.gabriel.singleton.SPaciente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 public class JFPaciente extends javax.swing.JFrame {
 
     Paciente p;
+    Pessoa r;
 
     /**
      * Creates new form Cadastro
@@ -41,6 +43,9 @@ public class JFPaciente extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jPCadastroPaciente = new javax.swing.JPanel();
         jLIDPaciente = new javax.swing.JLabel();
         jLNumeroSUSPaciente = new javax.swing.JLabel();
@@ -55,7 +60,6 @@ public class JFPaciente extends javax.swing.JFrame {
         jLSexoPaciente = new javax.swing.JLabel();
         jTFIDPaciente = new javax.swing.JTextField();
         jTFNumeroSUSPaciente = new javax.swing.JTextField();
-        jTFResponsavelPaciente = new javax.swing.JTextField();
         jTFNomePaciente = new javax.swing.JTextField();
         jTFCPFPaciente = new javax.swing.JTextField();
         jTFRGPaciente = new javax.swing.JTextField();
@@ -66,6 +70,7 @@ public class JFPaciente extends javax.swing.JFrame {
         jTFSexoPaciente = new javax.swing.JTextField();
         jBCadastrarPaciente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLCadastrodoPaciente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,8 +115,6 @@ public class JFPaciente extends javax.swing.JFrame {
 
         jTFNumeroSUSPaciente.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
-        jTFResponsavelPaciente.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
         jTFNomePaciente.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jTFCPFPaciente.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -143,6 +146,15 @@ public class JFPaciente extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Sim", "Não" }));
+        jComboBox1.setToolTipText("Selecione se você tem ou não um responsável");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPCadastroPacienteLayout = new javax.swing.GroupLayout(jPCadastroPaciente);
         jPCadastroPaciente.setLayout(jPCadastroPacienteLayout);
         jPCadastroPacienteLayout.setHorizontalGroup(
@@ -158,12 +170,12 @@ public class JFPaciente extends javax.swing.JFrame {
                     .addComponent(jLRGPaciente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFResponsavelPaciente)
                     .addComponent(jTFNumeroSUSPaciente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFRGPaciente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFNomePaciente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFCPFPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(jTFIDPaciente))
+                    .addComponent(jTFIDPaciente)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLDatadeNascimentoPaciente)
@@ -222,7 +234,7 @@ public class JFPaciente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLResponsavelPaciente)
-                            .addComponent(jTFResponsavelPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPCadastroPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLNomePaciente)
@@ -289,7 +301,7 @@ public class JFPaciente extends javax.swing.JFrame {
         char SexoPaciente = this.jTFSexoPaciente.getText().toUpperCase().charAt(0);
         int IDPaciente = Integer.parseInt(this.jTFIDPaciente.getText());
         int NumeroSUS = Integer.parseInt(this.jTFNumeroSUSPaciente.getText());
-        p = new Paciente(IDPaciente, NumeroSUS, p, NomePaciente, CPFPaciente, RGPaciente, EnderecoPaciente, TelefonePaciente, EstadoCivilPaciente, DataNascimentoPaciente, SexoPaciente);
+        p = new Paciente(IDPaciente, NumeroSUS, r, NomePaciente, CPFPaciente, RGPaciente, EnderecoPaciente, TelefonePaciente, EstadoCivilPaciente, DataNascimentoPaciente, SexoPaciente);
         SPaciente.getInstance().getPacientes().add(p);
     }//GEN-LAST:event_jBCadastrarPacienteActionPerformed
 
@@ -299,6 +311,15 @@ public class JFPaciente extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        switch (jComboBox1.getSelectedIndex()) {
+            case 1:
+                new JFResponsavel().setVisible(true);
+                break;
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,8 +363,12 @@ public class JFPaciente extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JButton jBCadastrarPaciente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLCPFPaciente;
     private javax.swing.JLabel jLCadastrodoPaciente;
     private javax.swing.JLabel jLDatadeNascimentoPaciente;
@@ -365,7 +390,6 @@ public class JFPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNomePaciente;
     private javax.swing.JTextField jTFNumeroSUSPaciente;
     private javax.swing.JTextField jTFRGPaciente;
-    private javax.swing.JTextField jTFResponsavelPaciente;
     private javax.swing.JTextField jTFSexoPaciente;
     private javax.swing.JTextField jTFTelefonePaciente;
     // End of variables declaration//GEN-END:variables

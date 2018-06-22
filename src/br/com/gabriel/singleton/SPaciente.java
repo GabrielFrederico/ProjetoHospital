@@ -6,6 +6,7 @@
 package br.com.gabriel.singleton;
 
 import br.com.gabriel.objetos.Paciente;
+import br.com.gabriel.objetos.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,17 @@ import java.util.List;
 public class SPaciente {
 
     List<Paciente> pacientes = new ArrayList();
-
-    private SPaciente() {
-    }
+    List<Pessoa> responsavel = new ArrayList();
 
     public List<Paciente> getPacientes() {
         return pacientes;
+    }
+
+    public List<Pessoa> getResponsavel() {
+        return responsavel;
+    }
+
+    private SPaciente() {
     }
 
     public static SPaciente getInstance() {

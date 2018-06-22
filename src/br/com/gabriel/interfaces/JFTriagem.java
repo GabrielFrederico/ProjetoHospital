@@ -57,6 +57,7 @@ public class JFTriagem extends javax.swing.JFrame {
         jTFAlturaTriagem = new javax.swing.JTextField();
         jTFAlergiasTriagem = new javax.swing.JTextField();
         jBCadastrarTriagem = new javax.swing.JButton();
+        jBAdicionarAlergias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -114,82 +115,99 @@ public class JFTriagem extends javax.swing.JFrame {
             }
         });
 
+        jBAdicionarAlergias.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBAdicionarAlergias.setText("+");
+        jBAdicionarAlergias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdicionarAlergiasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPTriagemLayout = new javax.swing.GroupLayout(jPTriagem);
         jPTriagem.setLayout(jPTriagemLayout);
         jPTriagemLayout.setHorizontalGroup(
             jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPTriagemLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLPacienteTriagem)
-                    .addComponent(jLEnfermeiraTriagem)
-                    .addComponent(jLPressaoTriagem)
-                    .addComponent(jLSintomaTriagem))
-                .addGap(32, 32, 32)
-                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFPacienteTriagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTFPressaoTriagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTFSintomaTriagem)
-                    .addComponent(jTFEnfermeiraTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPTriagemLayout.createSequentialGroup()
-                        .addComponent(jLPesoTriagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTFPesoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
-                        .addComponent(jLAlergiasTriagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
-                        .addComponent(jLAlturaTriagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTFAlturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
+                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPTriagemLayout.createSequentialGroup()
                         .addComponent(jLTemperaturaTriagem)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFTemperaturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBCadastrarTriagem)
-                .addContainerGap())
+                        .addComponent(jTFTemperaturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPTriagemLayout.createSequentialGroup()
+                        .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLPacienteTriagem)
+                            .addComponent(jLEnfermeiraTriagem)
+                            .addComponent(jLPressaoTriagem)
+                            .addComponent(jLSintomaTriagem))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFPacienteTriagem, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTFPressaoTriagem, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTFSintomaTriagem)
+                            .addComponent(jTFEnfermeiraTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
+                        .addComponent(jBCadastrarTriagem)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTriagemLayout.createSequentialGroup()
+                        .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLAlergiasTriagem)
+                            .addComponent(jLAlturaTriagem)
+                            .addComponent(jLPesoTriagem))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFPesoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFAlturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPTriagemLayout.createSequentialGroup()
+                                .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBAdicionarAlergias)))
+                        .addGap(19, 19, 19))))
         );
         jPTriagemLayout.setVerticalGroup(
             jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPTriagemLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPTriagemLayout.createSequentialGroup()
                         .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLEnfermeiraTriagem)
-                            .addComponent(jTFEnfermeiraTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLPesoTriagem)
-                            .addComponent(jTFPesoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFEnfermeiraTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLPacienteTriagem)
-                            .addComponent(jTFPacienteTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLAlturaTriagem))
+                            .addComponent(jTFPacienteTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLPressaoTriagem)
-                            .addComponent(jTFPressaoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jTFPressaoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPTriagemLayout.createSequentialGroup()
+                            .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLPesoTriagem)
+                                .addComponent(jTFPesoTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLAlturaTriagem)
+                                .addComponent(jTFAlturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(43, 43, 43))
                         .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLSintomaTriagem)
-                            .addComponent(jTFSintomaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLTemperaturaTriagem)
-                            .addComponent(jTFTemperaturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPTriagemLayout.createSequentialGroup()
-                        .addComponent(jTFAlturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLAlergiasTriagem))
-                        .addGap(46, 46, 46)))
+                            .addComponent(jLAlergiasTriagem)
+                            .addComponent(jTFAlergiasTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBAdicionarAlergias))))
+                .addGap(18, 18, 18)
+                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLSintomaTriagem)
+                    .addComponent(jTFSintomaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPTriagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTemperaturaTriagem)
+                    .addComponent(jTFTemperaturaTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBCadastrarTriagem)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,7 +219,7 @@ public class JFTriagem extends javax.swing.JFrame {
                 .addComponent(jPTriagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(194, 194, 194)
                 .addComponent(jLTriagem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -211,8 +229,8 @@ public class JFTriagem extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jLTriagem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPTriagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPTriagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -229,6 +247,10 @@ public class JFTriagem extends javax.swing.JFrame {
         t = new Triagem(e, p, Pressao, Sintoma, Temperatura, Peso, Altura, Alergias);
         STriagem.getInstance().getTriagem().add(t);
     }//GEN-LAST:event_jBCadastrarTriagemActionPerformed
+
+    private void jBAdicionarAlergiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdicionarAlergiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAdicionarAlergiasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,6 +289,7 @@ public class JFTriagem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAdicionarAlergias;
     private javax.swing.JButton jBCadastrarTriagem;
     private javax.swing.JLabel jLAlergiasTriagem;
     private javax.swing.JLabel jLAlturaTriagem;
